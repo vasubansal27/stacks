@@ -68,6 +68,9 @@ int main()
 }
 
 
+
+
+
 //implementation of stack using vector
 
 
@@ -113,6 +116,10 @@ int main()
   
     return 0; 
 }
+
+
+
+
 
 
 //implementation of stack using linked list
@@ -184,7 +191,10 @@ int main()
 }
 
 
-//reverse array
+
+
+
+//REVERSE ARRAY
 void reverseArray(int n, int* arr){
        stack<int> st;
        for(int i=0;i<n;i++){
@@ -196,3 +206,86 @@ void reverseArray(int n, int* arr){
            st.pop();
        }
     }
+
+
+
+
+
+
+//GETMIN FOR EACH ELEMENT
+
+stack<int > as;  //using auxilary array
+//Function to push all the elements into the stack.
+stack<int> _push(int arr[],int n)
+{
+   // your code here
+   stack<int> st;
+   for(int i=0;i<n;i++){
+       st.push(arr[i]);
+       if(as.empty())
+           as.push(arr[i]);
+       else if(arr[i]<=as.top())
+           as.push(arr[i]);
+  }
+  //cout<<as.top()<<endl;
+   return st;
+}
+
+//Function to print minimum value in stack each time while popping.
+void _getMinAtPop(stack<int>s)
+{
+    // your code here
+     while(s.empty()==false){
+       if(s.top()!=as.top()){
+           cout<<as.top()<<" ";
+           s.pop();
+       }
+       else{
+           cout<<as.top()<<" ";
+           s.pop();
+           as.pop();
+       }
+   }
+}
+
+
+
+
+//PARANTHESES CHECKER
+
+bool ispar(string s)
+    {
+        // Your code here
+        stack<char>st;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='{' || s[i]=='(' || s[i]=='['){
+                st.push(s[i]);
+            }
+            else{
+                if(st.empty()){
+                    return 0;
+                }
+                else{
+                    char val = st.top();
+                    st.pop();
+                    if(s[i]==']' && val!='['){
+                        return 0;
+                    }
+                    else if(s[i]==')' && val!='('){
+                        return 0;
+                    }
+                    else if(s[i]=='}' && val!='{'){
+                        return 0;
+                    }
+                }
+            }
+        }
+        if(st.empty()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+
