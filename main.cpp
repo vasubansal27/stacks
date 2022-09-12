@@ -183,3 +183,16 @@ int main()
     return 0; 
 }
 
+
+//reverse array
+void reverseArray(int n, int* arr){
+       stack<int> st;
+       for(int i=0;i<n;i++){
+           st.push(arr[i]);
+       }
+       int i =0;
+       while(!st.empty()){
+           arr[i++] = st.top();
+           st.pop();
+       }
+    }
