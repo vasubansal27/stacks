@@ -289,3 +289,18 @@ bool ispar(string s)
     }
 
 
+//STOCK SPAN  PROBLEM 
+//number of elements less than or equal it before it consecutively
+//indices
+stack<int>s;
+s.push(0) //index of first element
+for(int i=1;i<n;i++)
+{
+    while(!s.empty() && arr[s.top()]<=arr[i])
+                s.pop();
+    int span=(s.empty())?(i+1):(i-s.top());
+    cout < span < " ";
+    s.push(i);
+}
+
+
